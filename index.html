@@ -101,6 +101,18 @@
       --midnight-bg: #07152B;
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: clamp(14px, 1.1vw + 10px, 16px);
+      max-width: 100vw;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      scroll-padding-top: 1rem;
+    }
+
     body {
       background-color: #07152B;
       background-image: 
@@ -110,6 +122,10 @@
       color: #FAF9F6;
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
       selection-background-color: #D4AF37;
       selection-color: #07152B;
     }
@@ -256,17 +272,16 @@
       z-index: 1;
     }
 
-    /* Resplandores ambientales de fondo Azul Marino Imperial & Oro (Backdrop Glows) */
+    /* Resplandores ambientales de fondo Azul Marino Imperial & Oro (Backdrop Glows Fluidos) */
     .ambient-glow-1 {
       position: absolute;
       top: 5%;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      max-width: 90vw;
+      width: min(600px, 92vw);
+      height: min(600px, 92vw);
       background: radial-gradient(circle, rgba(28, 75, 155, 0.35) 0%, rgba(212, 175, 55, 0.12) 40%, transparent 70%);
-      filter: blur(75px);
+      filter: blur(65px);
       pointer-events: none;
       z-index: 0;
     }
@@ -274,11 +289,12 @@
     .ambient-glow-2 {
       position: absolute;
       top: 45%;
-      left: 10%;
-      width: 600px;
-      height: 600px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(520px, 88vw);
+      height: min(520px, 88vw);
       background: radial-gradient(circle, rgba(20, 60, 130, 0.3) 0%, rgba(143, 113, 28, 0.12) 50%, transparent 70%);
-      filter: blur(85px);
+      filter: blur(75px);
       pointer-events: none;
       z-index: 0;
     }
@@ -286,11 +302,12 @@
     .ambient-glow-3 {
       position: absolute;
       top: 80%;
-      right: 10%;
-      width: 650px;
-      height: 650px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(550px, 88vw);
+      height: min(550px, 88vw);
       background: radial-gradient(circle, rgba(32, 85, 175, 0.28) 0%, rgba(212, 175, 55, 0.1) 45%, transparent 70%);
-      filter: blur(85px);
+      filter: blur(75px);
       pointer-events: none;
       z-index: 0;
     }
@@ -505,21 +522,21 @@
   </div>
 
   <!-- ============================================================
-       AUDIO PLAYER FLOTANTE & REPRODUCTOR AMBIENTAL (ERGONOMÍA MÓVIL)
+       AUDIO PLAYER FLOTANTE & REPRODUCTOR AMBIENTAL (RESPONSIVE)
        ============================================================ -->
-  <div class="fixed bottom-5 right-4 sm:bottom-auto sm:top-5 sm:right-5 z-40 flex items-center gap-2">
+  <div class="fixed top-3 right-3 sm:top-5 sm:right-5 z-40 flex items-center gap-2">
     <button id="audio-toggle-btn" 
-            class="flex items-center gap-2.5 sm:gap-3 px-3.5 py-2.5 sm:px-4 sm:py-2.5 rounded-full glass-card border border-royal-gold/40 text-royal-goldLight hover:border-royal-gold hover:text-white active:scale-95 transition-all duration-300 shadow-2xl group backdrop-blur-xl"
+            class="flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full glass-card border border-royal-gold/40 text-royal-goldLight hover:border-royal-gold hover:text-white active:scale-90 transition-all duration-300 shadow-2xl group backdrop-blur-xl"
             title="Reproducir / Silenciar Música Ambiental"
             aria-label="Control de música de fondo">
-      <div id="equalizer-icon" class="flex items-end gap-0.5 h-4 sm:h-5 w-4 sm:w-5 justify-center equalizer-paused">
+      <div id="equalizer-icon" class="flex items-end gap-0.5 h-3.5 sm:h-5 w-3.5 sm:w-5 justify-center equalizer-paused">
         <span class="equalizer-bar"></span>
         <span class="equalizer-bar"></span>
         <span class="equalizer-bar"></span>
         <span class="equalizer-bar"></span>
       </div>
       <span id="audio-btn-label" class="text-xs uppercase tracking-widest font-semibold hidden sm:inline">Música</span>
-      <i id="audio-state-icon" data-lucide="volume-x" class="w-4 h-4 text-royal-gold group-hover:scale-110 transition-transform"></i>
+      <i id="audio-state-icon" data-lucide="volume-x" class="w-3.5 sm:w-4 h-3.5 sm:h-4 text-royal-gold group-hover:scale-110 transition-transform"></i>
     </button>
   </div>
 
@@ -527,35 +544,35 @@
        PANTALLA DE BIENVENIDA / SOBRE REAL (SPLASH SCREEN RESPONSIVE)
        ============================================================ -->
   <div id="splash-screen" 
-       class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-midnight-950/95 backdrop-blur-2xl transition-all duration-1000 overflow-y-auto">
+       class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-midnight-950/95 backdrop-blur-2xl transition-all duration-1000 overflow-y-auto min-h-[100dvh]">
     
     <!-- Marco Ornamental Perimetral del Sobre -->
-    <div class="relative w-full max-w-lg p-6 sm:p-12 my-auto rounded-3xl glass-card border-gold-bright text-center overflow-hidden shadow-2xl">
+    <div class="relative w-full max-w-md p-5 sm:p-10 my-auto rounded-3xl glass-card border-gold-bright text-center overflow-hidden shadow-2xl">
       
       <!-- Arabescos ornamentales de esquina -->
-      <div class="absolute top-3 left-3 text-royal-gold/40">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 text-royal-gold/40">
+        <svg class="w-7 h-7 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none">
           <path d="M2 38V12C2 6.47715 6.47715 2 12 2H38" stroke="currentColor" stroke-width="1.5"/>
           <circle cx="12" cy="12" r="3" fill="currentColor"/>
           <path d="M6 30V16C6 10.4772 10.4772 6 16 6H30" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2"/>
         </svg>
       </div>
-      <div class="absolute top-3 right-3 text-royal-gold/40 transform scale-x-[-1]">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <div class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 text-royal-gold/40 transform scale-x-[-1]">
+        <svg class="w-7 h-7 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none">
           <path d="M2 38V12C2 6.47715 6.47715 2 12 2H38" stroke="currentColor" stroke-width="1.5"/>
           <circle cx="12" cy="12" r="3" fill="currentColor"/>
           <path d="M6 30V16C6 10.4772 10.4772 6 16 6H30" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2"/>
         </svg>
       </div>
-      <div class="absolute bottom-3 left-3 text-royal-gold/40 transform scale-y-[-1]">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <div class="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 text-royal-gold/40 transform scale-y-[-1]">
+        <svg class="w-7 h-7 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none">
           <path d="M2 38V12C2 6.47715 6.47715 2 12 2H38" stroke="currentColor" stroke-width="1.5"/>
           <circle cx="12" cy="12" r="3" fill="currentColor"/>
           <path d="M6 30V16C6 10.4772 10.4772 6 16 6H30" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2"/>
         </svg>
       </div>
-      <div class="absolute bottom-3 right-3 text-royal-gold/40 transform scale-[-1]">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <div class="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 text-royal-gold/40 transform scale-[-1]">
+        <svg class="w-7 h-7 sm:w-10 sm:h-10" viewBox="0 0 40 40" fill="none">
           <path d="M2 38V12C2 6.47715 6.47715 2 12 2H38" stroke="currentColor" stroke-width="1.5"/>
           <circle cx="12" cy="12" r="3" fill="currentColor"/>
           <path d="M6 30V16C6 10.4772 10.4772 6 16 6H30" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 2"/>
@@ -563,8 +580,8 @@
       </div>
 
       <!-- Tiara / Corona Imperial SVG -->
-      <div class="flex justify-center mb-6">
-        <svg class="w-16 h-12 text-royal-gold animate-glow" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="flex justify-center mb-3 sm:mb-5">
+        <svg class="w-12 sm:w-16 h-9 sm:h-12 text-royal-gold animate-glow" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M32 4L38 20L52 10L46 36H18L12 10L26 20L32 4Z" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M18 36V42H46V36" stroke="url(#goldGradient)" stroke-width="2"/>
           <circle cx="32" cy="4" r="2.5" fill="#FFE885"/>
@@ -581,45 +598,45 @@
         </svg>
       </div>
 
-      <p class="text-xs uppercase tracking-[0.35em] text-royal-goldLight mb-3 font-light">
+      <p class="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-royal-goldLight mb-1 sm:mb-2 font-light">
         Invitación de Honor
       </p>
 
-      <h1 class="font-display text-2xl sm:text-3xl text-gold-gradient tracking-wide mb-2 font-bold">
+      <h1 class="font-display text-xl sm:text-3xl text-gold-gradient tracking-wide mb-1 sm:mb-2 font-bold">
         Mis XV Años
       </h1>
 
-      <p class="font-serif italic text-lg sm:text-xl text-royal-rose mb-8">
+      <p class="font-serif italic text-base sm:text-xl text-royal-rose mb-3 sm:mb-6">
         Solange Eluney Mercado Alegría
       </p>
 
       <!-- Sello Imperial de Cera con Monograma "S E" -->
-      <div class="relative flex justify-center items-center my-6">
-        <div class="absolute w-32 h-32 rounded-full border border-royal-gold/30 animate-spin-slow"></div>
-        <div class="absolute w-28 h-28 rounded-full border border-dashed border-royal-gold/40"></div>
+      <div class="relative flex justify-center items-center my-3 sm:my-5">
+        <div class="absolute w-24 sm:w-32 h-24 sm:h-32 rounded-full border border-royal-gold/30 animate-spin-slow"></div>
+        <div class="absolute w-20 sm:w-28 h-20 sm:h-28 rounded-full border border-dashed border-royal-gold/40"></div>
         
-        <div class="wax-seal w-24 h-24 rounded-full flex flex-col items-center justify-center cursor-pointer transform hover:scale-105 transition-transform duration-300 group">
-          <span class="font-display text-2xl text-midnight-950 font-black tracking-widest leading-none drop-shadow-sm group-hover:scale-110 transition-transform">
+        <div class="wax-seal w-18 h-18 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center cursor-pointer transform hover:scale-105 transition-transform duration-300 group">
+          <span class="font-display text-xl sm:text-2xl text-midnight-950 font-black tracking-widest leading-none drop-shadow-sm group-hover:scale-110 transition-transform">
             S · E
           </span>
-          <span class="text-[9px] uppercase tracking-widest text-midnight-900 font-bold mt-1">
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-widest text-midnight-900 font-bold mt-0.5 sm:mt-1">
             2026
           </span>
         </div>
       </div>
 
-      <p class="text-sm text-royal-ivory/80 font-light max-w-xs mx-auto mb-8 leading-relaxed">
+      <p class="text-xs sm:text-sm text-royal-ivory/80 font-light max-w-xs mx-auto mb-4 sm:mb-6 leading-relaxed">
         Tienes una invitación especial reservada para ser parte de una noche mágica.
       </p>
 
       <!-- Botón de Apertura -->
       <button id="open-invitation-btn" 
-              class="w-full sm:w-auto px-8 py-4 rounded-full btn-imperial text-xs font-bold tracking-[0.25em] flex items-center justify-center gap-3 mx-auto shadow-2xl">
+              class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-imperial text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] flex items-center justify-center gap-2.5 sm:gap-3 mx-auto shadow-2xl active:scale-95">
         <span>Abrir Invitación Real</span>
         <i data-lucide="sparkles" class="w-4 h-4"></i>
       </button>
 
-      <p class="text-[11px] text-royal-goldLight/60 tracking-wider mt-4">
+      <p class="text-[10px] sm:text-[11px] text-royal-goldLight/60 tracking-wider mt-2.5 sm:mt-4">
         Toca para abrir y activar la música
       </p>
     </div>
@@ -633,12 +650,12 @@
     <!-- ------------------------------------------------------------
          1. HERO SECTION (PORTADA TIPOGRÁFICA IMPERIAL)
          ------------------------------------------------------------ -->
-    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-16 text-center">
+    <section id="hero" class="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-16 text-center">
       
       <!-- Corona Ornamental -->
-      <div class="mb-4 animate-float">
-        <div class="inline-flex items-center justify-center p-3 rounded-full bg-royal-gold/10 border border-royal-gold/30 backdrop-blur-md">
-          <svg class="w-10 h-8 text-royal-gold" viewBox="0 0 64 48" fill="none">
+      <div class="mb-3 sm:mb-4 animate-float">
+        <div class="inline-flex items-center justify-center p-2.5 sm:p-3 rounded-full bg-royal-gold/10 border border-royal-gold/30 backdrop-blur-md">
+          <svg class="w-8 sm:w-10 h-7 sm:h-8 text-royal-gold" viewBox="0 0 64 48" fill="none">
             <path d="M32 6L37 18L50 11L44 34H20L14 11L27 18L32 6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
             <circle cx="32" cy="6" r="2" fill="#D4AF37"/>
             <circle cx="50" cy="11" r="2" fill="#D4AF37"/>
@@ -648,50 +665,50 @@
       </div>
 
       <!-- Subtítulo Superior -->
-      <div class="inline-block px-5 py-1.5 rounded-full bg-royal-gold/10 border border-royal-gold/25 mb-6">
-        <span class="text-xs sm:text-sm uppercase tracking-[0.35em] text-royal-goldLight font-medium">
+      <div class="inline-block px-4 sm:px-5 py-1 sm:py-1.5 rounded-full bg-royal-gold/10 border border-royal-gold/25 mb-4 sm:mb-6">
+        <span class="text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.3em] sm:tracking-[0.35em] text-royal-goldLight font-medium">
           MIS XV AÑOS
         </span>
       </div>
 
-      <!-- Nombre Imperial de la Quinceañera -->
-      <div class="max-w-4xl mx-auto mb-6">
-        <h1 class="font-serif italic text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal leading-[1.08] text-gold-gradient drop-shadow-lg tracking-tight">
+      <!-- Nombre Imperial de la Quinceañera con Tipografía Fluida -->
+      <div class="max-w-4xl mx-auto mb-4 sm:mb-6">
+        <h1 class="font-serif italic text-[clamp(2.15rem,8.5vw,5.5rem)] font-normal leading-[1.08] text-gold-gradient drop-shadow-lg tracking-tight">
           Solange Eluney
         </h1>
-        <h2 class="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase tracking-[0.2em] sm:tracking-[0.28em] text-royal-goldLight/90 mt-2 font-medium">
+        <h2 class="font-display text-[clamp(1rem,4.5vw,2.25rem)] uppercase tracking-[0.18em] sm:tracking-[0.28em] text-royal-goldLight/90 mt-1.5 sm:mt-2 font-medium">
           Mercado Alegría
         </h2>
       </div>
 
       <!-- Arabesco / Divisor Vectorial de Lujo -->
-      <div class="flex items-center justify-center gap-3 my-6 text-royal-gold/60 max-w-md w-full">
+      <div class="flex items-center justify-center gap-3 my-4 sm:my-6 text-royal-gold/60 max-w-xs sm:max-w-md w-full">
         <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-royal-gold/50 to-royal-gold"></span>
-        <svg class="w-6 h-6 text-royal-gold flex-shrink-0" viewBox="0 0 24 24" fill="none">
+        <svg class="w-5 sm:w-6 h-5 sm:h-6 text-royal-gold flex-shrink-0" viewBox="0 0 24 24" fill="none">
           <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/>
         </svg>
         <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent via-royal-gold/50 to-royal-gold"></span>
       </div>
 
       <!-- Frase Emotiva -->
-      <div class="max-w-xl mx-auto px-4 mb-10">
-        <p class="font-serif italic text-lg sm:text-xl md:text-2xl text-royal-ivory/90 leading-relaxed font-light">
+      <div class="max-w-xl mx-auto px-2 sm:px-4 mb-6 sm:mb-10">
+        <p class="font-serif italic text-[clamp(1rem,3.8vw,1.4rem)] text-royal-ivory/90 leading-relaxed font-light">
           “Hay momentos inolvidables que se atesoran en el corazón para siempre; por esa razón, quiero que compartas conmigo este día tan especial.”
         </p>
       </div>
 
-      <!-- Fecha Clave en Portada -->
-      <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl glass-card border-gold-subtle mb-12">
-        <i data-lucide="calendar" class="w-4 h-4 text-royal-gold"></i>
-        <span class="text-xs sm:text-sm uppercase tracking-widest text-royal-goldLight font-medium">
+      <!-- Fecha Clave en Portada Responsiva -->
+      <div class="inline-flex items-center justify-center gap-2 sm:gap-3 px-3.5 sm:px-6 py-2 sm:py-3 rounded-2xl glass-card border-gold-subtle mb-8 sm:mb-12 max-w-[92vw]">
+        <i data-lucide="calendar" class="w-3.5 sm:w-4 h-3.5 sm:h-4 text-royal-gold flex-shrink-0"></i>
+        <span class="text-[11px] sm:text-xs md:text-sm uppercase tracking-wider sm:tracking-widest text-royal-goldLight font-medium text-center">
           13 de Noviembre de 2026 · Cajamarca, Perú
         </span>
       </div>
 
       <!-- Indicador de Scroll -->
-      <a href="#countdown" class="inline-flex flex-col items-center gap-2 text-royal-gold/60 hover:text-royal-gold transition-colors duration-300 group">
-        <span class="text-[10px] uppercase tracking-[0.3em] font-light text-royal-ivory/60 group-hover:text-royal-gold">Descubrir</span>
-        <i data-lucide="chevron-down" class="w-5 h-5 animate-bounce text-royal-gold"></i>
+      <a href="#countdown" class="inline-flex flex-col items-center gap-1.5 sm:gap-2 text-royal-gold/60 hover:text-royal-gold transition-colors duration-300 group">
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-light text-royal-ivory/60 group-hover:text-royal-gold">Descubrir</span>
+        <i data-lucide="chevron-down" class="w-4 sm:w-5 h-4 sm:h-5 animate-bounce text-royal-gold"></i>
       </a>
     </section>
 
@@ -715,48 +732,48 @@
       </p>
 
       <!-- Grid de 4 Tarjetas Glassmorphism -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 max-w-3xl mx-auto">
         
         <!-- Días -->
-        <div class="corner-bracket glass-card glass-card-hover p-6 sm:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
+        <div class="corner-bracket glass-card glass-card-hover p-3.5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
           <div class="absolute -top-12 -right-12 w-24 h-24 bg-royal-gold/10 rounded-full blur-xl group-hover:bg-royal-gold/20 transition-all"></div>
-          <span id="days" class="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-gold-gradient tracking-tight leading-none mb-2">
+          <span id="days" class="font-serif text-[clamp(1.75rem,6.5vw,3.75rem)] font-light text-gold-gradient tracking-tight leading-none mb-1 sm:mb-2">
             00
           </span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-royal-goldLight/80 font-medium">
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-royal-goldLight/80 font-medium">
             Días
           </span>
         </div>
 
         <!-- Horas -->
-        <div class="corner-bracket glass-card glass-card-hover p-6 sm:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
+        <div class="corner-bracket glass-card glass-card-hover p-3.5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
           <div class="absolute -top-12 -right-12 w-24 h-24 bg-royal-gold/10 rounded-full blur-xl group-hover:bg-royal-gold/20 transition-all"></div>
-          <span id="hours" class="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-gold-gradient tracking-tight leading-none mb-2">
+          <span id="hours" class="font-serif text-[clamp(1.75rem,6.5vw,3.75rem)] font-light text-gold-gradient tracking-tight leading-none mb-1 sm:mb-2">
             00
           </span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-royal-goldLight/80 font-medium">
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-royal-goldLight/80 font-medium">
             Horas
           </span>
         </div>
 
         <!-- Minutos -->
-        <div class="corner-bracket glass-card glass-card-hover p-6 sm:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
+        <div class="corner-bracket glass-card glass-card-hover p-3.5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
           <div class="absolute -top-12 -right-12 w-24 h-24 bg-royal-gold/10 rounded-full blur-xl group-hover:bg-royal-gold/20 transition-all"></div>
-          <span id="minutes" class="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-gold-gradient tracking-tight leading-none mb-2">
+          <span id="minutes" class="font-serif text-[clamp(1.75rem,6.5vw,3.75rem)] font-light text-gold-gradient tracking-tight leading-none mb-1 sm:mb-2">
             00
           </span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-royal-goldLight/80 font-medium">
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-royal-goldLight/80 font-medium">
             Minutos
           </span>
         </div>
 
         <!-- Segundos -->
-        <div class="corner-bracket glass-card glass-card-hover p-6 sm:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
+        <div class="corner-bracket glass-card glass-card-hover p-3.5 sm:p-6 md:p-8 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
           <div class="absolute -top-12 -right-12 w-24 h-24 bg-royal-gold/10 rounded-full blur-xl group-hover:bg-royal-gold/20 transition-all"></div>
-          <span id="seconds" class="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-gold-gradient tracking-tight leading-none mb-2">
+          <span id="seconds" class="font-serif text-[clamp(1.75rem,6.5vw,3.75rem)] font-light text-gold-gradient tracking-tight leading-none mb-1 sm:mb-2">
             00
           </span>
-          <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-royal-goldLight/80 font-medium">
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-royal-goldLight/80 font-medium">
             Segundos
           </span>
         </div>
@@ -795,74 +812,74 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
         
         <!-- Tarjeta 1: Mis Padres -->
-        <div class="corner-bracket glass-card glass-card-hover p-6 sm:p-8 rounded-3xl border-gold-bright flex flex-col items-center text-center relative overflow-hidden shadow-2xl justify-between group">
+        <div class="corner-bracket glass-card glass-card-hover p-5 sm:p-8 rounded-2xl sm:rounded-3xl border-gold-bright flex flex-col items-center text-center relative overflow-hidden shadow-2xl justify-between group">
           <div class="absolute -top-12 -left-12 w-32 h-32 bg-royal-gold/10 rounded-full blur-2xl pointer-events-none group-hover:bg-royal-gold/20 transition-all"></div>
           
           <div class="w-full flex flex-col items-center">
-            <div class="w-14 h-14 rounded-2xl bg-royal-gold/10 border border-royal-gold/30 flex items-center justify-center text-royal-gold mb-4 group-hover:scale-110 group-hover:bg-royal-gold/20 transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.25)]">
-              <i data-lucide="users" class="w-7 h-7"></i>
+            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-2xl bg-royal-gold/10 border border-royal-gold/30 flex items-center justify-center text-royal-gold mb-3 sm:mb-4 group-hover:scale-110 group-hover:bg-royal-gold/20 transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.25)]">
+              <i data-lucide="users" class="w-6 sm:w-7 h-6 sm:h-7"></i>
             </div>
 
-            <span class="text-xs uppercase tracking-[0.28em] text-royal-goldLight font-semibold mb-4">
+            <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.28em] text-royal-goldLight font-semibold mb-3 sm:mb-4">
               Mis Padres
             </span>
 
-            <div class="space-y-3 w-full">
+            <div class="space-y-2.5 sm:space-y-3 w-full">
               <!-- Papá -->
-              <div class="py-3 px-4 rounded-2xl bg-midnight-900/60 border border-royal-gold/25 shadow-sm">
-                <span class="text-[10px] uppercase tracking-widest text-royal-goldLight/70 font-semibold block mb-0.5">
+              <div class="py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl bg-midnight-900/60 border border-royal-gold/25 shadow-sm">
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-widest text-royal-goldLight/70 font-semibold block mb-0.5">
                   Papá
                 </span>
-                <h4 class="font-serif italic text-lg sm:text-xl text-royal-ivory font-normal tracking-wide">
+                <h4 class="font-serif italic text-[clamp(1.05rem,4.2vw,1.35rem)] text-royal-ivory font-normal tracking-wide leading-snug break-words">
                   Elmer Ivan Mercado Salvatierra
                 </h4>
               </div>
 
               <!-- Mamá -->
-              <div class="py-3 px-4 rounded-2xl bg-midnight-900/60 border border-royal-gold/25 shadow-sm">
-                <span class="text-[10px] uppercase tracking-widest text-royal-rose font-semibold block mb-0.5">
+              <div class="py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl bg-midnight-900/60 border border-royal-gold/25 shadow-sm">
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-widest text-royal-rose font-semibold block mb-0.5">
                   Mamá
                 </span>
-                <h4 class="font-serif italic text-lg sm:text-xl text-royal-ivory font-normal tracking-wide">
+                <h4 class="font-serif italic text-[clamp(1.05rem,4.2vw,1.35rem)] text-royal-ivory font-normal tracking-wide leading-snug break-words">
                   Delia del Rosario Alegría Valera
                 </h4>
               </div>
             </div>
           </div>
 
-          <p class="font-serif italic text-xs sm:text-sm text-royal-ivory/70 font-light mt-5 pt-3 border-t border-royal-gold/15 w-full">
+          <p class="font-serif italic text-[11px] sm:text-sm text-royal-ivory/70 font-light mt-4 sm:mt-5 pt-3 border-t border-royal-gold/15 w-full">
             “Gracias por su infinito amor, dedicación y por ser el pilar de mi vida.”
           </p>
         </div>
 
         <!-- Tarjeta 2: Mi Hermano -->
-        <div class="corner-bracket glass-card glass-card-hover p-6 sm:p-8 rounded-3xl border-gold-bright flex flex-col items-center text-center relative overflow-hidden shadow-2xl justify-between group">
+        <div class="corner-bracket glass-card glass-card-hover p-5 sm:p-8 rounded-2xl sm:rounded-3xl border-gold-bright flex flex-col items-center text-center relative overflow-hidden shadow-2xl justify-between group">
           <div class="absolute -top-12 -right-12 w-32 h-32 bg-royal-rose/10 rounded-full blur-2xl pointer-events-none group-hover:bg-royal-rose/20 transition-all"></div>
           
           <div class="w-full flex flex-col items-center">
-            <div class="w-14 h-14 rounded-2xl bg-royal-gold/10 border border-royal-gold/30 flex items-center justify-center text-royal-gold mb-4 group-hover:scale-110 group-hover:bg-royal-gold/20 transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.25)]">
-              <i data-lucide="sparkles" class="w-7 h-7"></i>
+            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-2xl bg-royal-gold/10 border border-royal-gold/30 flex items-center justify-center text-royal-gold mb-3 sm:mb-4 group-hover:scale-110 group-hover:bg-royal-gold/20 transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.25)]">
+              <i data-lucide="sparkles" class="w-6 sm:w-7 h-6 sm:h-7"></i>
             </div>
 
-            <span class="text-xs uppercase tracking-[0.28em] text-royal-goldLight font-semibold mb-4">
+            <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.28em] text-royal-goldLight font-semibold mb-3 sm:mb-4">
               Mi Hermano
             </span>
 
-            <div class="space-y-3 w-full">
+            <div class="space-y-2.5 sm:space-y-3 w-full">
               <!-- Hermano -->
-              <div class="py-3 px-4 rounded-2xl bg-midnight-900/60 border border-royal-gold/25 shadow-sm">
-                <span class="text-[10px] uppercase tracking-widest text-royal-goldLight/70 font-semibold block mb-0.5">
+              <div class="py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl bg-midnight-900/60 border border-royal-gold/25 shadow-sm">
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-widest text-royal-goldLight/70 font-semibold block mb-0.5">
                   Hermano
                 </span>
-                <h4 class="font-serif italic text-lg sm:text-xl text-royal-ivory font-normal tracking-wide">
+                <h4 class="font-serif italic text-[clamp(1.05rem,4.2vw,1.35rem)] text-royal-ivory font-normal tracking-wide leading-snug break-words">
                   Elmer Hernán Mercado Alegría
                 </h4>
               </div>
             </div>
           </div>
 
-          <div class="w-full mt-5 pt-3 border-t border-royal-gold/15">
-            <p class="font-serif italic text-xs sm:text-sm text-royal-ivory/70 font-light leading-relaxed">
+          <div class="w-full mt-4 sm:mt-5 pt-3 border-t border-royal-gold/15">
+            <p class="font-serif italic text-[11px] sm:text-sm text-royal-ivory/70 font-light leading-relaxed">
               “Compañero inseparable de vida, risas y aventuras en cada momento de este hermoso camino.”
             </p>
           </div>
