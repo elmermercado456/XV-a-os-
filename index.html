@@ -2,10 +2,13 @@
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Solange Eluney Mercado Alegría — Mis XV Años | Invitación Real</title>
   <meta name="description" content="Acompáñame a celebrar mis XV Años. Solange Eluney Mercado Alegría. Doña Julia Restaurante, Cajamarca, Perú. 13 de Noviembre de 2026.">
   <meta name="theme-color" content="#07152B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta property="og:title" content="Mis XV Años — Solange Eluney Mercado Alegría">
   <meta property="og:description" content="Tienes una invitación real para una noche mágica e inolvidable. Doña Julia Restaurante, Cajamarca.">
   <meta property="og:type" content="website">
@@ -292,24 +295,24 @@
       z-index: 0;
     }
 
-    /* Marca de agua de fondo: Lirio Real Centrado */
+    /* Marca de agua de fondo: Lirio Real Centrado y Adaptable a Móvil */
     .lily-watermark-container {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: min(780px, 92vw);
-      height: min(780px, 92vw);
+      width: min(650px, 92vw);
+      height: min(650px, 85vh);
       pointer-events: none;
       z-index: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       user-select: none;
-      opacity: 0.18;
+      opacity: 0.16;
       mix-blend-mode: screen;
-      -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0) 74%);
-      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0) 74%);
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0) 75%);
+      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0) 75%);
       animation: lilyPulse 10s ease-in-out infinite alternate;
     }
 
@@ -322,13 +325,33 @@
 
     @keyframes lilyPulse {
       0% {
-        opacity: 0.14;
+        opacity: 0.13;
         transform: translate(-50%, -50%) scale(0.97);
       }
       100% {
-        opacity: 0.22;
+        opacity: 0.20;
         transform: translate(-50%, -50%) scale(1.02);
       }
+    }
+
+    /* Estilos de Radio Buttons para RSVP en Móviles */
+    .rsvp-radio:checked + .rsvp-card {
+      border-color: #D4AF37 !important;
+      background: rgba(212, 175, 55, 0.16) !important;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3) !important;
+    }
+    .rsvp-radio:checked + .rsvp-card .radio-dot {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+    .rsvp-radio-declined:checked + .rsvp-card {
+      border-color: #F4C2C2 !important;
+      background: rgba(244, 194, 194, 0.16) !important;
+      box-shadow: 0 0 15px rgba(244, 194, 194, 0.3) !important;
+    }
+    .rsvp-radio-declined:checked + .rsvp-card .radio-dot-declined {
+      opacity: 1 !important;
+      transform: scale(1) !important;
     }
 
     /* Sello de lacre real */
@@ -482,14 +505,14 @@
   </div>
 
   <!-- ============================================================
-       AUDIO PLAYER FLOTANTE & REPRODUCTOR AMBIENTAL
+       AUDIO PLAYER FLOTANTE & REPRODUCTOR AMBIENTAL (ERGONOMÍA MÓVIL)
        ============================================================ -->
-  <div class="fixed top-5 right-5 z-40 flex items-center gap-2">
+  <div class="fixed bottom-5 right-4 sm:bottom-auto sm:top-5 sm:right-5 z-40 flex items-center gap-2">
     <button id="audio-toggle-btn" 
-            class="flex items-center gap-3 px-4 py-2.5 rounded-full glass-card border border-royal-gold/40 text-royal-goldLight hover:border-royal-gold hover:text-white transition-all duration-300 shadow-xl group"
+            class="flex items-center gap-2.5 sm:gap-3 px-3.5 py-2.5 sm:px-4 sm:py-2.5 rounded-full glass-card border border-royal-gold/40 text-royal-goldLight hover:border-royal-gold hover:text-white active:scale-95 transition-all duration-300 shadow-2xl group backdrop-blur-xl"
             title="Reproducir / Silenciar Música Ambiental"
             aria-label="Control de música de fondo">
-      <div id="equalizer-icon" class="flex items-end gap-0.5 h-5 w-5 justify-center equalizer-paused">
+      <div id="equalizer-icon" class="flex items-end gap-0.5 h-4 sm:h-5 w-4 sm:w-5 justify-center equalizer-paused">
         <span class="equalizer-bar"></span>
         <span class="equalizer-bar"></span>
         <span class="equalizer-bar"></span>
@@ -501,13 +524,13 @@
   </div>
 
   <!-- ============================================================
-       PANTALLA DE BIENVENIDA / SOBRE REAL (SPLASH SCREEN)
+       PANTALLA DE BIENVENIDA / SOBRE REAL (SPLASH SCREEN RESPONSIVE)
        ============================================================ -->
   <div id="splash-screen" 
-       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight-950/95 backdrop-blur-2xl transition-all duration-1000">
+       class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-midnight-950/95 backdrop-blur-2xl transition-all duration-1000 overflow-y-auto">
     
     <!-- Marco Ornamental Perimetral del Sobre -->
-    <div class="relative w-full max-w-lg p-8 sm:p-12 rounded-3xl glass-card border-gold-bright text-center overflow-hidden shadow-2xl">
+    <div class="relative w-full max-w-lg p-6 sm:p-12 my-auto rounded-3xl glass-card border-gold-bright text-center overflow-hidden shadow-2xl">
       
       <!-- Arabescos ornamentales de esquina -->
       <div class="absolute top-3 left-3 text-royal-gold/40">
@@ -898,7 +921,7 @@
           </div>
 
           <!-- Contenedor Estilizado del Minimapa -->
-          <div class="map-container relative w-full h-[320px] sm:h-[400px] rounded-2xl border-2 border-royal-gold/50 shadow-2xl overflow-hidden group">
+          <div class="map-container relative w-full h-[260px] sm:h-[350px] md:h-[400px] rounded-2xl border-2 border-royal-gold/50 shadow-2xl overflow-hidden group">
             
             <!-- Iframe de Google Maps Exacto -->
             <iframe 
@@ -927,14 +950,14 @@
           <!-- ========================================================
                BOTONES DE ACCIÓN BAJO EL MINIMAPA
                ======================================================== -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-4">
             
             <!-- Botón 1: Abrir Ruta en Google Maps (Navegación GPS) -->
             <a href="https://www.google.com/maps/dir/?api=1&destination=Do%C3%B1a+Julia+Restaurante+Jr.+Ucayali+333+Cajamarca+06125" 
                target="_blank" 
                rel="noopener noreferrer"
                id="btn-google-maps"
-               class="btn-imperial py-4 px-6 rounded-2xl text-xs font-bold tracking-widest flex items-center justify-center gap-3 text-center transition-all group">
+               class="btn-imperial py-3.5 sm:py-4 px-4 sm:px-6 rounded-2xl text-xs font-bold tracking-wider sm:tracking-widest flex items-center justify-center gap-2.5 sm:gap-3 text-center transition-all group active:scale-[0.98]">
               <i data-lucide="compass" class="w-5 h-5 group-hover:rotate-45 transition-transform duration-300"></i>
               <span>Abrir Ruta en Google Maps</span>
               <i data-lucide="external-link" class="w-4 h-4 opacity-70"></i>
@@ -945,7 +968,7 @@
                target="_blank" 
                rel="noopener noreferrer"
                id="btn-add-calendar"
-               class="btn-glass py-4 px-6 rounded-2xl text-xs font-bold tracking-widest flex items-center justify-center gap-3 text-center transition-all group">
+               class="btn-glass py-3.5 sm:py-4 px-4 sm:px-6 rounded-2xl text-xs font-bold tracking-wider sm:tracking-widest flex items-center justify-center gap-2.5 sm:gap-3 text-center transition-all group active:scale-[0.98]">
               <i data-lucide="calendar-plus" class="w-5 h-5 text-royal-gold group-hover:scale-110 transition-transform"></i>
               <span>Agendar en mi Calendario</span>
             </a>
@@ -1056,22 +1079,22 @@
                      name="guest-name" 
                      required
                      placeholder="Ej: Familia Mercado / Carlos Díaz" 
-                     class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-midnight-900/80 border border-royal-gold/30 text-royal-ivory placeholder-royal-ivory/40 focus:outline-none focus:border-royal-gold focus:ring-1 focus:ring-royal-gold transition-all text-sm">
+                     class="w-full pl-12 pr-4 py-3 sm:py-3.5 rounded-2xl bg-midnight-900/80 border border-royal-gold/30 text-royal-ivory placeholder-royal-ivory/40 focus:outline-none focus:border-royal-gold focus:ring-1 focus:ring-royal-gold transition-all text-base sm:text-sm">
             </div>
           </div>
 
-          <!-- Campo 2: Asistencia (Radio / Botones de Selección) -->
+          <!-- Campo 2: Asistencia (Radio / Botones de Selección Táctiles) -->
           <div>
             <label class="block text-xs uppercase tracking-widest text-royal-goldLight font-semibold mb-3">
               ¿Podrás acompañarnos? *
             </label>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               
-              <label class="cursor-pointer">
-                <input type="radio" name="attendance" value="si" checked class="peer sr-only">
-                <div class="p-4 rounded-2xl border border-royal-gold/30 bg-midnight-900/60 peer-checked:border-royal-gold peer-checked:bg-royal-gold/15 peer-checked:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all flex items-center gap-3">
-                  <div class="w-4 h-4 rounded-full border border-royal-gold flex items-center justify-center">
-                    <div class="w-2 h-2 rounded-full bg-royal-gold opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+              <label class="cursor-pointer group block">
+                <input type="radio" name="attendance" value="si" checked class="rsvp-radio sr-only">
+                <div class="rsvp-card p-3.5 sm:p-4 rounded-2xl border border-royal-gold/30 bg-midnight-900/60 transition-all flex items-center gap-3 active:scale-[0.98]">
+                  <div class="w-5 h-5 rounded-full border border-royal-gold flex items-center justify-center flex-shrink-0 bg-midnight-950">
+                    <div class="radio-dot w-2.5 h-2.5 rounded-full bg-royal-gold opacity-0 transform scale-0 transition-all duration-200"></div>
                   </div>
                   <div>
                     <p class="text-sm font-semibold text-royal-ivory">¡Sí, asistiré con alegría! ✨</p>
@@ -1080,11 +1103,11 @@
                 </div>
               </label>
 
-              <label class="cursor-pointer">
-                <input type="radio" name="attendance" value="no" class="peer sr-only">
-                <div class="p-4 rounded-2xl border border-royal-gold/30 bg-midnight-900/60 peer-checked:border-royal-rose peer-checked:bg-royal-rose/15 peer-checked:shadow-[0_0_15px_rgba(244,194,194,0.3)] transition-all flex items-center gap-3">
-                  <div class="w-4 h-4 rounded-full border border-royal-rose flex items-center justify-center">
-                    <div class="w-2 h-2 rounded-full bg-royal-rose opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+              <label class="cursor-pointer group block">
+                <input type="radio" name="attendance" value="no" class="rsvp-radio-declined sr-only">
+                <div class="rsvp-card p-3.5 sm:p-4 rounded-2xl border border-royal-gold/30 bg-midnight-900/60 transition-all flex items-center gap-3 active:scale-[0.98]">
+                  <div class="w-5 h-5 rounded-full border border-royal-rose flex items-center justify-center flex-shrink-0 bg-midnight-950">
+                    <div class="radio-dot-declined w-2.5 h-2.5 rounded-full bg-royal-rose opacity-0 transform scale-0 transition-all duration-200"></div>
                   </div>
                   <div>
                     <p class="text-sm font-semibold text-royal-ivory">No podré asistir 🤍</p>
@@ -1107,7 +1130,7 @@
               </div>
               <select id="guest-count" 
                       name="guest-count" 
-                      class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-midnight-900/80 border border-royal-gold/30 text-royal-ivory focus:outline-none focus:border-royal-gold focus:ring-1 focus:ring-royal-gold transition-all text-sm appearance-none cursor-pointer">
+                      class="w-full pl-12 pr-4 py-3 sm:py-3.5 rounded-2xl bg-midnight-900/80 border border-royal-gold/30 text-royal-ivory focus:outline-none focus:border-royal-gold focus:ring-1 focus:ring-royal-gold transition-all text-base sm:text-sm appearance-none cursor-pointer">
                 <option value="1 persona">1 Persona (Solo yo)</option>
                 <option value="2 personas" selected>2 Personas</option>
                 <option value="3 personas">3 Personas (Familia)</option>
@@ -1129,7 +1152,7 @@
                         name="guest-message" 
                         rows="3" 
                         placeholder="Escribe tus bendiciones, felicitaciones y mejores deseos para este día inolvidable..." 
-                        class="w-full p-4 rounded-2xl bg-midnight-900/80 border border-royal-gold/30 text-royal-ivory placeholder-royal-ivory/40 focus:outline-none focus:border-royal-gold focus:ring-1 focus:ring-royal-gold transition-all text-sm resize-none"></textarea>
+                        class="w-full p-3.5 sm:p-4 rounded-2xl bg-midnight-900/80 border border-royal-gold/30 text-royal-ivory placeholder-royal-ivory/40 focus:outline-none focus:border-royal-gold focus:ring-1 focus:ring-royal-gold transition-all text-base sm:text-sm resize-none"></textarea>
             </div>
           </div>
 
