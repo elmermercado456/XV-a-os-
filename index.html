@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Solange Eluney Mercado Alegría — Mis XV Años | Invitación Real</title>
   <meta name="description" content="Acompáñame a celebrar mis XV Años. Solange Eluney Mercado Alegría. Doña Julia Restaurante, Cajamarca, Perú. 13 de Noviembre de 2026.">
-  <meta name="theme-color" content="#0B0F19">
+  <meta name="theme-color" content="#07152B">
   <meta property="og:title" content="Mis XV Años — Solange Eluney Mercado Alegría">
   <meta property="og:description" content="Tienes una invitación real para una noche mágica e inolvidable. Doña Julia Restaurante, Cajamarca.">
   <meta property="og:type" content="website">
@@ -31,11 +31,20 @@
         extend: {
           colors: {
             midnight: {
-              950: '#04060A',
-              900: '#070B14',
-              800: '#0B0F19',
-              700: '#111827',
-              600: '#1E293B',
+              950: '#030A17', // Azul marino abisal profundo
+              900: '#07152B', // Azul marino imperial de fondo
+              800: '#0C203E', // Azul marino tarjetas
+              700: '#142E54', // Azul marino bordes
+              600: '#1E4378', // Azul marino acento
+            },
+            navy: {
+              950: '#030A17',
+              900: '#07152B',
+              800: '#0C203E',
+              700: '#142E54',
+              600: '#1E4378',
+              500: '#2A5C9E',
+              400: '#5A8FD8',
             },
             royal: {
               gold: '#D4AF37',
@@ -80,25 +89,31 @@
   </script>
 
   <style>
-    /* Estilos personalizados de Alta Costura Digital & Awwwards */
+    /* Estilos personalizados de Alta Costura Digital: Azul Marino Imperial & Oro */
     :root {
       --gold-primary: #D4AF37;
       --gold-glow: rgba(212, 175, 55, 0.4);
-      --midnight-bg: #070B14;
+      --navy-bg: #07152B;
+      --navy-deep: #030A17;
+      --midnight-bg: #07152B;
     }
 
     body {
-      background-color: var(--midnight-bg);
+      background-color: #07152B;
+      background-image: 
+        radial-gradient(ellipse 90% 60% at 50% 0%, #0E2952 0%, #07152B 50%, #030A17 100%),
+        linear-gradient(180deg, #07152B 0%, #040E1C 100%);
+      background-attachment: fixed;
       color: #FAF9F6;
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
       selection-background-color: #D4AF37;
-      selection-color: #070B14;
+      selection-color: #07152B;
     }
 
     ::selection {
       background: #D4AF37;
-      color: #04060A;
+      color: #030A17;
     }
 
     /* Shimmer Gold Metallic Text */
@@ -128,13 +143,13 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Bordes de Lujo y Glassmorphism */
+    /* Bordes de Lujo y Glassmorphism Azul Marino */
     .glass-card {
-      background: rgba(11, 15, 25, 0.65);
+      background: rgba(10, 26, 50, 0.72);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(212, 175, 55, 0.22);
-      box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 243, 176, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      box-shadow: 0 15px 40px -10px rgba(2, 6, 14, 0.75), inset 0 1px 1px 0 rgba(255, 243, 176, 0.15);
     }
 
     .glass-card-hover {
@@ -143,7 +158,7 @@
     .glass-card-hover:hover {
       transform: translateY(-4px);
       border-color: rgba(212, 175, 55, 0.55);
-      box-shadow: 0 20px 50px -10px rgba(212, 175, 55, 0.18), inset 0 1px 2px 0 rgba(255, 243, 176, 0.3);
+      box-shadow: 0 20px 50px -10px rgba(28, 75, 155, 0.35), 0 0 25px rgba(212, 175, 55, 0.2), inset 0 1px 2px 0 rgba(255, 243, 176, 0.3);
     }
 
     .border-gold-subtle {
@@ -217,10 +232,10 @@
       width: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #070B14;
+      background: #030A17;
     }
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, #8F711C, #D4AF37, #8F711C);
+      background: linear-gradient(to bottom, #1E4378, #D4AF37, #1E4378);
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
@@ -238,17 +253,17 @@
       z-index: 1;
     }
 
-    /* Resplandores ambientales de fondo (Backdrop Glows) */
+    /* Resplandores ambientales de fondo Azul Marino Imperial & Oro (Backdrop Glows) */
     .ambient-glow-1 {
       position: absolute;
       top: 5%;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
+      width: 700px;
+      height: 700px;
       max-width: 90vw;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(244, 194, 194, 0.05) 40%, transparent 70%);
-      filter: blur(60px);
+      background: radial-gradient(circle, rgba(28, 75, 155, 0.35) 0%, rgba(212, 175, 55, 0.12) 40%, transparent 70%);
+      filter: blur(75px);
       pointer-events: none;
       z-index: 0;
     }
@@ -257,10 +272,10 @@
       position: absolute;
       top: 45%;
       left: 10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(143, 113, 28, 0.15) 0%, transparent 70%);
-      filter: blur(80px);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(20, 60, 130, 0.3) 0%, rgba(143, 113, 28, 0.12) 50%, transparent 70%);
+      filter: blur(85px);
       pointer-events: none;
       z-index: 0;
     }
@@ -269,12 +284,51 @@
       position: absolute;
       top: 80%;
       right: 10%;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(244, 194, 194, 0.08) 0%, rgba(212, 175, 55, 0.06) 40%, transparent 70%);
-      filter: blur(80px);
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(32, 85, 175, 0.28) 0%, rgba(212, 175, 55, 0.1) 45%, transparent 70%);
+      filter: blur(85px);
       pointer-events: none;
       z-index: 0;
+    }
+
+    /* Marca de agua de fondo: Lirio Real Centrado */
+    .lily-watermark-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(780px, 92vw);
+      height: min(780px, 92vw);
+      pointer-events: none;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      opacity: 0.18;
+      mix-blend-mode: screen;
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0) 74%);
+      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0) 74%);
+      animation: lilyPulse 10s ease-in-out infinite alternate;
+    }
+
+    .lily-watermark-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: contrast(1.15) brightness(1.08);
+    }
+
+    @keyframes lilyPulse {
+      0% {
+        opacity: 0.14;
+        transform: translate(-50%, -50%) scale(0.97);
+      }
+      100% {
+        opacity: 0.22;
+        transform: translate(-50%, -50%) scale(1.02);
+      }
     }
 
     /* Sello de lacre real */
@@ -336,16 +390,16 @@
   </style>
 </head>
 
-<body class="relative min-h-screen bg-midnight-950 text-royal-ivory antialiased">
+<body class="relative min-h-screen bg-[#07152B] text-royal-ivory antialiased">
 
   <!-- ============================================================
        INTRO SCREEN (PRELOADER): "XV" REAL CON BARRA DE CARGA DE 3 SEGUNDOS
        ============================================================ -->
   <div id="intro-loader" 
-       class="fixed inset-0 z-[100] flex flex-col items-center justify-center p-6 bg-[#04060A] text-center transition-all duration-700 ease-out select-none">
+       class="fixed inset-0 z-[100] flex flex-col items-center justify-center p-6 bg-[#030A17] text-center transition-all duration-700 ease-out select-none">
     
     <!-- Resplandor ambiental central -->
-    <div class="absolute w-96 h-96 max-w-full rounded-full bg-royal-gold/15 blur-3xl pointer-events-none animate-pulse-slow"></div>
+    <div class="absolute w-96 h-96 max-w-full rounded-full bg-blue-600/15 blur-3xl pointer-events-none animate-pulse-slow"></div>
 
     <div class="relative z-10 flex flex-col items-center max-w-sm w-full">
       
@@ -394,7 +448,7 @@
 
       <!-- Barra de Carga de 3 Segundos -->
       <div class="w-full max-w-xs space-y-2">
-        <div class="w-full h-2.5 rounded-full bg-midnight-900 border border-royal-gold/40 p-0.5 overflow-hidden shadow-[0_0_15px_rgba(212,175,55,0.25)]">
+        <div class="w-full h-2.5 rounded-full bg-[#07152B] border border-royal-gold/40 p-0.5 overflow-hidden shadow-[0_0_15px_rgba(212,175,55,0.25)]">
           <div id="intro-progress-bar" 
                class="h-full rounded-full bg-gradient-to-r from-[#D4AF37] via-[#FFE885] to-[#D4AF37] shadow-[0_0_12px_#FFE885] transition-all ease-linear w-0">
           </div>
@@ -415,10 +469,17 @@
        ============================================================ -->
   <canvas id="stardust-canvas"></canvas>
 
-  <!-- Luces radiales de ambientación mágica -->
+  <!-- Luces radiales de ambientación mágica Azul Marino & Oro -->
   <div class="ambient-glow-1"></div>
   <div class="ambient-glow-2"></div>
   <div class="ambient-glow-3"></div>
+
+  <!-- ============================================================
+       MARCA DE AGUA CENTRAL DE FONDO: LIRIO REAL Y EMBLEMA XV
+       ============================================================ -->
+  <div class="lily-watermark-container" aria-hidden="true">
+    <img src="lirio.jpg" alt="Lirio Real" class="lily-watermark-img" loading="eager">
+  </div>
 
   <!-- ============================================================
        AUDIO PLAYER FLOTANTE & REPRODUCTOR AMBIENTAL
